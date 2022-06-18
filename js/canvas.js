@@ -109,7 +109,7 @@ function buildGameCanvas() {
 
     textEnter = new createjs.Bitmap(loader.getResult('textEnter'));
     centerReg(textEnter);
-    textEnter.x = canvasW / 100 * 48;
+    textEnter.x = canvasW / 100 * 46;
     textEnter.y = canvasH / 100 * 25;
 
     textInstruction = new createjs.Bitmap(loader.getResult('textInstruction'));
@@ -412,8 +412,8 @@ function buildGameCanvas() {
 var x = document.createElement("INPUT");
 x.setAttribute("type", "number");
 x.setAttribute("id", "betbutton");
-x.setAttribute("min", "0.001");
-x.setAttribute("step", "0.001");
+x.setAttribute("min", "0.05");
+x.setAttribute("step", "0.05");
 x.setAttribute("value", "0.00");
 x.setAttribute("max", "2");
 x.setAttribute("onKeyPress", "return false;");

@@ -521,7 +521,7 @@ function createNewPin() {
     gameValue.timerSpeed -= timerSpeedIncrease;
     gameValue.timer = 100;
     // initGameTimer();
-    console.log(gameValue.pin)
+    // console.log(gameValue.pin)
 }
 
 /*!
