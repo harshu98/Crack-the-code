@@ -425,7 +425,7 @@ function saveGame(score, amount) {
             'amountPaid': (amount - (amount * 0.015)),
         }
         // console.log(postData);
-    axios.post(`${DB_URL}/api/crackCode`, {
+    axios.post(`${DB_URL}/api/game/crackCode`, {
         ...postData
     });
     /*$.ajax({
