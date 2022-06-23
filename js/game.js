@@ -32,7 +32,7 @@ var alarmSoundEnable = true; //enable alarm sound
 var alarmSoundInitValue = 40; //minimum timer bar value to play alarm sound, default 40 of 100 percent of timer bar
 var alarmSoundTimer = 1000; //alarm sound speed, default 1 sec
 
-var gameScore = 0; //access granted game score
+var gameScore = 15; //access granted game score
 
 var backgroundMusic = true; //play background music
 
@@ -131,6 +131,13 @@ function buildGameButton() {
         goPage('main');
         document.getElementById("betbutton").disabled = false
     });
+    buttonReplay1.cursor = "pointer";
+    buttonReplay1.addEventListener("mousedown", function(evt) {
+        timtxt.text = timernumber.replace('[NUMBER]', "00");
+        paid = false;
+        goPage('main');
+        document.getElementById("betbutton").disabled = false
+    });
 
     btnFacebook.cursor = "pointer";
     btnFacebook.addEventListener("click", function(evt) {
@@ -194,6 +201,14 @@ function buildGameButton() {
         document.getElementById("gif").style.display = "block";
         // console.log(bet);
         createtrnasc(bet);
+    })
+
+    buttonclear.cursor = "pointer";
+    buttonclear.addEventListener("click", function(evt) {
+        if (focusInput > 0) {
+            focusInput--;
+            $.input['number' + focusInput].text = '';
+        }
     })
 }
 async function createtrnasc(bet) {
@@ -298,27 +313,29 @@ function goPage(page) {
             // [10, 3, 1.5, 1.25, 0.8, 0.5]; 
             playSound('soundMachineOff');
             let amount = 0;
-            switch (gameValue.tried) {
-                case 0:
-                    amount = SOL * bonusArray[0];
-                    break;
-                case 1:
-                    amount = SOL * bonusArray[1];
-                    break;
-                case 2:
-                    amount = SOL * bonusArray[2];
-                    break;
-                case 3:
-                    amount = SOL * bonusArray[3];
-                    break;
-                case 4:
-                    amount = SOL * bonusArray[4];
-                    break;
-                case 5:
-                    amount = SOL * bonusArray[5];
-                    break;
-                default:
-                    amount = SOL * 0;
+            if (gameValue.score > 0) {
+                switch (gameValue.tried) {
+                    case 0:
+                        amount = SOL * bonusArray[0];
+                        break;
+                    case 1:
+                        amount = SOL * bonusArray[1];
+                        break;
+                    case 2:
+                        amount = SOL * bonusArray[2];
+                        break;
+                    case 3:
+                        amount = SOL * bonusArray[3];
+                        break;
+                    case 4:
+                        amount = SOL * bonusArray[4];
+                        break;
+                    case 5:
+                        amount = SOL * bonusArray[5];
+                        break;
+                    default:
+                        amount = SOL * 0;
+                }
             }
             textFinalScoreDisplay.text = `${Math.round(amount * 10000) / 10000} SOL`;
             saveGame(gameValue.score, amount);
@@ -521,7 +538,6 @@ function createNewPin() {
     gameValue.timerSpeed -= timerSpeedIncrease;
     gameValue.timer = 100;
     // initGameTimer();
-    // console.log(gameValue.pin)
 }
 
 /*!
@@ -683,7 +699,6 @@ function resetInputBar() {
  * 
  */
 function inputNumber(num) {
-    // console.log("input number")
     playSound('soundButton');
 
     if (focusInput == 0) {

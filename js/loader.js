@@ -46,6 +46,7 @@ function initPreload() {
         { src: 'assets/button_whatsapp.png', id: 'btnWhatsapp' },
 
         { src: 'assets/button_submit.png', id: 'buttonsubmit' },
+        { src: 'assets/button_clear.png', id: 'buttonclear' },
         { src: 'assets/bettxt.png', id: 'bettxt' },
         { src: 'assets/betslot.png', id: 'betslot' },
         { src: 'assets/timer.png', id: 'timerpng' },

@@ -178,6 +178,12 @@ function buildGameCanvas() {
     centerReg(buttonsubmit);
     buttonsubmit.x = canvasW / 100 * 87;
     buttonsubmit.y = canvasH / 100 * 82;
+
+    buttonclear = new createjs.Bitmap(loader.getResult('buttonclear'));
+    centerReg(buttonclear);
+    buttonclear.x = canvasW / 100 * 87;
+    buttonclear.y = canvasH / 100 * 90;
+
     bettxt = new createjs.Bitmap(loader.getResult('bettxt'));
     centerReg(bettxt);
     bettxt.x = canvasW / 100 * 87;
@@ -392,7 +398,7 @@ function buildGameCanvas() {
     mainContainer.addChild(
         digitTop, logo, btnStart);
     // this.addbtn();
-    gameContainer.addChild(textEnter, textInstruction, creditspanel, wallet, walletId, txtCredit, timerpng, timtxt, buttonsubmit, bettxt, betslot,
+    gameContainer.addChild(textEnter, textInstruction, creditspanel, wallet, walletId, txtCredit, timerpng, timtxt, buttonsubmit, buttonclear, bettxt, betslot,
         // scoreBar1, scoreBar2, scoreBar3,  screenTimer, screenTimerAlert,screenScoreText,screenTriedText, 
         instructionsTxt, inputContainer, inputHistoryContainer, screenAccessGranted, screenReflect);
     resultContainer.addChild(bg, winpopup, scoreslot, buttonReplay,
